@@ -7,18 +7,20 @@
 
 import { NativeModules, Platform } from 'react-native';
 const invariant = require('invariant');
-const RNCookieManagerIOS = NativeModules.RNCookieManagerIOS;
-const RNCookieManagerAndroid = NativeModules.RNCookieManagerAndroid;
 
 let CookieManager;
 
 if (Platform.OS === 'ios') {
+  const RNCookieManagerIOS = NativeModules.RNCookieManagerIOS;
+
   invariant(
     RNCookieManagerIOS,
     '@react-native-community/cookies: Add RNCookieManagerIOS.h and RNCookieManagerIOS.m to your Xcode project',
   );
   CookieManager = RNCookieManagerIOS;
 } else if (Platform.OS === 'android') {
+  const RNCookieManagerAndroid = NativeModules.RNCookieManagerAndroid;
+
   invariant(
     RNCookieManagerAndroid,
     '@react-native-community/cookies: Import libraries to android "react-native link @react-native-community/cookies"',
